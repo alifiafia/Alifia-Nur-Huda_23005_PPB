@@ -3,6 +3,8 @@ import 'form_mahasiswa.dart';
 import 'daftar_mahasiswa.dart';
 import 'tentang_aplikasi.dart';
 import 'pengaturan.dart';
+import 'form_dosen.dart';
+import 'form_matkul.dart';
 
 void main() => runApp(const MyApp());
 
@@ -24,6 +26,8 @@ class MyApp extends StatelessWidget {
         '/list': (_) => const DaftarMahasiswaPage(),
         '/tentang': (_) => const TentangAplikasiPage(),
         '/pengaturan': (_) => const PengaturanPage(),
+        '/formdosen': (_) => const FormDosenPage(),
+        '/formmatkul': (_) => const FormMatkulPage(),
       },
     );
   }
@@ -65,6 +69,22 @@ class MainWithDrawer extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text('Form Dosen'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/formdosen');
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.book),
+              title: const Text('Form Mata Kuliah'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/formmatkul');
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.info),
               title: const Text('Tentang Aplikasi'),
               onTap: () {
@@ -100,10 +120,18 @@ class _HomeContent extends StatelessWidget {
           padding: const EdgeInsets.all(24),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: const [
-              Icon(Icons.menu, size: 48),
-              SizedBox(height: 12),
-              Text('Tap ikon ☰ atau geser dari kiri untuk membuka Drawer.'),
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12), // biar rounded
+                child: Image.network(
+                  "https://picsum.photos/200", // random photo 200x200
+                  width: 120,
+                  height: 120,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(height: 12),
+              const Text('Ini Tugas Projek Alifia Nur Huda.'),
             ],
           ),
         ),
